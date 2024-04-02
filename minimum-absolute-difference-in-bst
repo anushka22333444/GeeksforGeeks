@@ -1,0 +1,22 @@
+class Solution
+{
+    void put(Node root,Queue<Integer> pq){
+        if(root==null) return;
+        pq.add(root.data);
+        put(root.left,pq);
+        put(root.right,pq);
+    }
+    int absolute_diff(Node root)
+    {
+        //Your code here
+        Queue<Integer> pq=new PriorityQueue<>();
+        put(root,pq);
+        int pre=pq.poll(),ans=(int)(1e9);
+        while(!pq.isEmpty()){
+            int curr=pq.poll();
+            ans=Math.min(ans,Math.abs(curr-pre));
+            pre=curr;
+        }
+        return ans;
+    }
+}
