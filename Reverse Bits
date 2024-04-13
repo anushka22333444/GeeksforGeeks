@@ -1,0 +1,18 @@
+class Solution {
+    static Long reversedBits(Long x) {
+        // code here
+        int f = 31, l = 0;     // f = first, l = last
+        long rev = 0;
+        
+        while(f > l) {
+            if((x & (1L<<f)) != 0) {   // 1<<f mtlb 'f' agar '0' idx m h toh mask m sb '0' honge except that idx  
+                rev = rev | (1L<<l);   // yaha pe bhi check 
+            }
+            if((x & (1L<<l)) != 0) {
+                rev = rev | (1L<<f);     // 1L kiyuki long h 
+            }
+            f--; l++;
+        }
+        return rev;
+    }
+};
