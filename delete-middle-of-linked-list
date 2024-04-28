@@ -1,0 +1,29 @@
+class Solution {
+    int count(Node head){
+        int c=0;
+        while(head!=null){
+            c++;
+            head=head.next;
+        }
+        return c;
+    }
+    Node deleteMid(Node head) {
+        // This is method only submission.
+        // You only need to complete the method.
+        if(head==null) return head;
+        int c = count(head);
+         if(c==1) return null;
+        int p = c/2;
+            Node ptr = head;
+            Node pre = null;
+            while(p>=1){
+                pre=ptr;
+              ptr=ptr.next;
+              p--;
+            }
+            pre.next=ptr.next;
+            ptr.next = null;  
+            
+        return head;
+    }
+}
